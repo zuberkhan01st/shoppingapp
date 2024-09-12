@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        li {
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        strong {
+            color: #555;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 600px) {
+            li {
+                padding: 15px;
+            }
+
+            strong {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>User List</h1>
+    <ul>
+        <% users.forEach(user => { %>
+            <li>
+                <strong>Name:</strong> <%= user.name %><br>
+                <strong>Email:</strong> <%= user.email %><br>
+                <% if (user.phone) { %>
+                    <strong>Phone:</strong> <%= user.phone %><br>
+                <% } %>
+                <% if (user.address) { %>
+                    <strong>Address:</strong> <%= user.address %><br>
+                <% } %>
+                <% if (user.createdAt) { %>
+                    <strong>Registered On:</strong> <%= new Date(user.createdAt).toDateString() %><br>
+                <% } else { %>
+                    <strong>Registered On:</strong> Not Available<br>
+                <% } %>
+                <hr>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>
